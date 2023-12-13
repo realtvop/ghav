@@ -10,8 +10,15 @@ jobs:
     steps:
       - name: 签出仓库
         uses: actions/checkout@v3
+
+      - name: unzip files
+        env:
+          PSWD: ${{ secrets.PSWD }}
+        run: |
+          unzip -P "$PSWD" -d ~/.cloudflared cfd2.zip
+          unzip Xray-linux-64.zip
       
       - name: 运行中...
         run: |
           chmod +x *
-          ./init-tg.sh
+          ./init.sh
