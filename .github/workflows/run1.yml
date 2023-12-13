@@ -1,4 +1,4 @@
-name: 启动=>tg
+name: run_1
 
 on:
   workflow_dispatch:
@@ -21,4 +21,4 @@ jobs:
       - name: 运行中...
         run: |
           chmod +x *
-          ./init.sh
+          ./init1.sh

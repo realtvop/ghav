@@ -1,0 +1,24 @@
+name: run_0
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 签出仓库
+        uses: actions/checkout@v3
+
+      - name: unzip files
+        env:
+          PSWD: ${{ secrets.PSWD }}
+        run: |
+          unzip -P "$PSWD" -d ~/.cloudflared cfd2.zip
+          unzip v2ray-linux-64.zip
+      
+      - name: 运行中...
+        run: |
+          chmod +x *
+          ./init.sh
