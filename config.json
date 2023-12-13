@@ -1,49 +1,28 @@
 {
-  "log": {
-      "loglevel": "warning"
-  },
-  "routing": {
-      "domainStrategy": "AsIs",
-      "rules": [
-          {
-              "type": "field",
-              "ip": [
-                  "geoip:private"
-              ],
-              "outboundTag": "block"
-          }
-      ]
-  },
   "inbounds": [
-      {
-          "listen": "0.0.0.0",
-          "port": 23599,
-          "protocol": "vmess",
-          "settings": {
-              "clients": [
-                  {
-                      "id": "1e77a35c-54c1-4115-946b-646839fb9ceb"
-                  }
-              ]
-          },
-          "streamSettings": {
-              "network": "ws",
-              "security": "none",
-              "wsSettings": {
-                "path": "/test",
-                "headers": {}
-              }
+    {
+      "port": 16823,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "b831381d-6324-4d53-ad4f-8cda48b30811",
+            "alterId": 64
           }
+        ]
+      },
+      "streamSettings": {
+        "network":"ws",
+        "wsSettings": {
+          "path": "/test"
+        }
       }
+    }
   ],
   "outbounds": [
-      {
-          "protocol": "freedom",
-          "tag": "direct"
-      },
-      {
-          "protocol": "blackhole",
-          "tag": "block"
-      }
+    {
+      "protocol": "freedom",
+      "settings": {}
+    }
   ]
 }

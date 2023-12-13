@@ -16,7 +16,7 @@ jobs:
           PSWD: ${{ secrets.PSWD }}
         run: |
           unzip -P "$PSWD" -d ~/.cloudflared cfd2.zip
-          unzip Xray-linux-64.zip
+          unzip v2ray-linux-64.zip
       
       - name: 运行中...
         run: |
