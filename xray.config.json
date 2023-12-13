@@ -1,45 +1,49 @@
 {
-  "inbounds": [
-    {
-      "listen": null,
-      "port": 23599,
-      "protocol": "vmess",
-      "settings": {
-        "clients": [
+  "log": {
+      "loglevel": "warning"
+  },
+  "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
           {
-            "id": "1e77a35c-54c1-4115-946b-646839fb9ceb",
-            "alterId": 0
+              "type": "field",
+              "ip": [
+                  "geoip:private"
+              ],
+              "outboundTag": "block"
           }
-        ],
-        "disableInsecureEncryption": false
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "none",
-        "wsSettings": {
-          "path": "/test",
-          "headers": {}
-        }
-      },
-      "tag": "inbound-23599",
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls"
-        ]
+      ]
+  },
+  "inbounds": [
+      {
+          "listen": "0.0.0.0",
+          "port": 23599,
+          "protocol": "vmess",
+          "settings": {
+              "clients": [
+                  {
+                      "id": "1e77a35c-54c1-4115-946b-646839fb9ceb"
+                  }
+              ]
+          },
+          "streamSettings": {
+              "network": "ws",
+              "security": "none",
+              "wsSettings": {
+                "path": "/test",
+                "headers": {}
+              }
+          }
       }
-    }
   ],
   "outbounds": [
-    {
-      "protocol": "freedom",
-      "settings": {}
-    },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "blocked"
-    }
+      {
+          "protocol": "freedom",
+          "tag": "direct"
+      },
+      {
+          "protocol": "blackhole",
+          "tag": "block"
+      }
   ]
 }
