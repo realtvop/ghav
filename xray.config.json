@@ -2,7 +2,7 @@
   "inbounds": [
     {
       "listen": null,
-      "port": 50309,
+      "port": 23599,
       "protocol": "vmess",
       "settings": {
         "clients": [
@@ -20,6 +20,14 @@
           "path": "/test",
           "headers": {}
         }
+      },
+      "tag": "inbound-23599",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
       }
     }
   ],
@@ -27,6 +35,11 @@
     {
       "protocol": "freedom",
       "settings": {}
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
     }
   ]
 }
