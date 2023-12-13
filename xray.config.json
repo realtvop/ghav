@@ -1,45 +1,32 @@
 {
-    "inbounds": [
-      {
-        "port": 50309,
-        "protocol": "vmess",
-        "settings": {
-          "clients": [
-            {
-              "id": "de3b15e1-73d0-4be8-c908-53987f64be89",
-              "alterId": 0
-            }
-          ],
-          "disableInsecureEncryption": false
-        },
-        "streamSettings": {
-          "network": "ws",
-          "security": "none",
-          "wsSettings": {
-            "path": "/test",
-            "headers": {}
+  "inbounds": [
+    {
+      "listen": null,
+      "port": 50309,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "de3b15e1-73d0-4be8-c908-53987f64be89",
+            "alterId": 0
           }
-        },
-        "tag": "inbound-50309",
-        "sniffing": {
-          "enabled": true,
-          "destOverride": [
-            "http",
-            "tls"
-          ]
+        ],
+        "disableInsecureEncryption": false
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/test",
+          "headers": {}
         }
       }
-    ],
-    "outbounds": [
-      {
-        "protocol": "freedom",
-        "settings": {}
-      },
-      {
-        "protocol": "blackhole",
-        "settings": {},
-        "tag": "blocked"
-      }
-    ]
-  }
-  
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    }
+  ]
+}
